@@ -60,7 +60,7 @@ a raw version of WikidataEvolve can be compile. Be aware that the frequencies in
 
 To compile WikidataEvolve I wrote the script 'wikidata_evolve_builder.py' which divides Wikidata9M into n equal-sized intervals containing the same number of triple operations to compile training and test data for each interval. The official version counts 4 intervals. 
 As Wikidata9M represents a knowledge graph evolution, a major challenge in the compilation process has been to split the Wikidata9M time stream into intervals, perform a train and test split and to simultaneously ensure that the training and test data are disjunctive throughout the graph evolution. 
-For details of the compilation algorithm I encourage you to review the mentioned script; for a more abstract description I encourage you to review the algorithms 2 and 3 of my master's thesis at https://github.com/rlafraie/masters-thesis).
+For details of the compilation algorithm I encourage you to review the mentioned script; for a more abstract description I encourage you to review the algorithms 2 and 3 of my master's thesis at https://github.com/rlafraie/masters-thesis.
 
 'wikidata_evolve_builder.py' allows you to compile another version of WikidataEvolve for your own needs. 
 First, go to the folder of your local repository copy and install the required python modules from the command line.
@@ -82,35 +82,35 @@ The script prompts you to provide 3 inputs in the following order:
 3) Specify the number of test examples in the test samples. If you test samples are not needed leave this prompt blank and only test datasets will be compiled.
 
 ## Benchmark Folder Structure
-
+```txt
 root/datasets/WikidataEvolve/[ filtered | raw ]_version_[ <timestamp> ]
    │
-   ├── entity2id.txt 				# Map of wikidata item identifiers to enumerated identifiers)
-   ├── relation2id.txt 			    # Map of wikidata property identifiers to enumerated identifiers)
-   ├── mapped_triple-op2id.txt  	# Sequence of triple operations including the mapped identifiers)
+   ├── entity2id.txt            # Map of wikidata item identifiers to enumerated identifiers)
+   ├── relation2id.txt.         # Map of wikidata property identifiers to enumerated identifiers)
+   ├── mapped_triple-op2id.txt  # Sequence of triple operations including the mapped identifiers)
    │
    │
    ├── increments
    │   │
-   │   ├── entity2id.txt 				# Map of wikidata item identifiers to enumerated identifiers)
-   │   ├── relation2id.txt 			    # Map of wikidata property identifiers to enumerated identifiers)
+   │   ├── entity2id.txt        # Map of wikidata item identifiers to enumerated identifiers)
+   │   ├── relation2id.txt      # Map of wikidata property identifiers to enumerated identifiers)
    │   └── <interval index>  : [ 1 | 2 | 3 | 4 ]
    │       │
-   │       ├── global_triple2id.txt     # Set of all triples currently existing in the knowledge graph.
+   │       ├── global_triple2id.txt    # Set of all triples currently existing in the knowledge graph.
    │       │
-   │       ├── train2id.txt 		    # Training Increment: Set of training triples which have been added to the graph.
+   │       ├── train2id.txt             # Training Increment: Set of training triples which have been added to the graph.
    │       │
-   │       ├── test2id_all.txt   	    # Set of triples used for testing a knowledge graph embedding technique.
+   │       ├── test2id_all.txt          # Set of triples used for testing a knowledge graph embedding technique.
    │       ├── test2id.txt              # Set of test triples sampled from 'test2id_all.txt'technique.
-   │       ├── valid2id_all.txt 	    # Set of triples used for validating a knowledge graph embedding technique.
+   │       ├── valid2id_all.txt         # Set of triples used for validating a knowledge graph embedding technique.
    │       └── valid2id.txt             # Set of validation triples sampled from 'valid2id_all.txt'technique.
    │
    ├── snapshots
    │   │
    │   └── <interval index>  : [ 1 | 2 | 3 | 4 ]
    │       │   
-   │       ├── entity2id.txt 		# Mapping files of entities and relations from their global identifiers (applying to the 
-   │       ├── relation2id.txt 		  entire WikidataEvolve evolution) to local (i.e. snapshot-bounded) identifiers.
+   │       ├── entity2id.txt        # Mapping files of entities and relations from their global identifiers (applying to the 
+   │       ├── relation2id.txt.       entire WikidataEvolve evolution) to local (i.e. snapshot-bounded) identifiers.
    │       │ 
    │       ├── global_triple2id.txt # All triples existing in the knowledge graph at the corresponding snapshot. Encoded by global identifiers.
    │       ├── triple2id.txt        # All triples existing in the knowledge graph at the corresponding snapshot. Encoded by local identifiers.
@@ -119,14 +119,14 @@ root/datasets/WikidataEvolve/[ filtered | raw ]_version_[ <timestamp> ]
    │       │
    │       ├── test2id_all.txt      # Set of triples used for testing a knowledge graph embedding technique. Encoded by local identifiers.
    │       ├── test2id.txt          # Set of test triples sampled from 'test2id_all.txt'technique. Encoded by local identifiers.
-   │       ├── valid2id_all.txt 	# Set of triples used for validating a knowledge graph embedding technique.
+   │       ├── valid2id_all.txt     # Set of triples used for validating a knowledge graph embedding technique.
    │       └── valid2id.txt         # Set of validation triples sampled from 'valid2id_all.txt'technique.
    │
    └── updates
-	   │
-	   ├── entity2id.txt 				# Map of wikidata item ids to enumerated ids
-	   ├── relation2id.txt 			    # Map of wikidata property ids to enumerated ids
-       └── <interval index>  : [ 1 | 2 | 3 | 4 ]
+        │
+        ├── entity2id.txt         # Map of wikidata item ids to enumerated ids
+        ├── relation2id.txt       # Map of wikidata property ids to enumerated ids
+        └── <interval index>  : [ 1 | 2 | 3 | 4 ]
            │
            ├── global_triple2id.txt     # Set of all triples currently existing in the knowledge graph.
            ├── triple-op2id.txt         # Update of the knowledge graph represented by triple operations
@@ -144,6 +144,7 @@ root/datasets/WikidataEvolve/[ filtered | raw ]_version_[ <timestamp> ]
            ├── tc_negative_deleted_[ train | valid | test ]_triples.txt        # Test examples for negative triple classification separately stored for
            ├── tc_positive_oscillated_[ train | valid | test ]_triples.txt     # each category and source dataset. For a detailed task description, I 
            └── tc_negative_oscillated_[ train | valid | test ]_triples.txt     # refer to section 5 of my master's thesis.
+```
 
 ## References
 <a id="1">[1]</a> 
@@ -153,4 +154,4 @@ Antoine Bordes, Jason Weston, Ronan Collobert, and Yoshua Bengio. Learning struc
 Richard Socher, Danqi Chen, Christopher D. Manning, and Andrew Y. Ng. Reason- ing with neural tensor networks for knowledge base completion. In NIPS, pages 926–934, 2013.
 
 <a id="1">[3]</a> 
-Antoine Bordes, Nicolas Usunier, Alberto García-Durán, Jason Weston, and Oksana Yakhnenko. Translating embeddings for modeling multi-relational data. In NIPS, pages 2787–2795, 2013.
+Antoine Bordes, Nicolas Usunier, Alberto García-Durán, Jason Weston, and Oksana Yakhnenko. Translating embeddings for modeling multi-relational data. In NIPS, pages 2787–2795, 2013.
