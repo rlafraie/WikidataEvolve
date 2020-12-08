@@ -79,12 +79,12 @@ Here, you can see the details of the officially released WikidataEvolve dataset 
 As the raw version contains files which exceeding the file size limit of github it was not able to upload this version. By using the mentioned script
 a raw version of WikidataEvolve can be compile. Be aware that the frequencies in the table below might vary, as the compilation process partially is influenced by chance.
 
-<p align="right">
-   <img src="images/WikidataEvolve_filtered_stats.png" alt="Details of the official, filtered version of WikidataEvolve." height="60%" width="60%">
+<p align="center">
+   <img src="images/WikidataEvolve_filtered_stats.png" alt="Details of the official, filtered version of WikidataEvolve." height="80%" width="80%">
 </p>
 
 <p align="center" style="font-family:Monospace">
-   Table 1: Details of the official (filtered) version of WikidataEvolve.
+   Table 1: Details of the *official*, filtered version of WikidataEvolve.
 </p>
 
 <br>
@@ -92,7 +92,7 @@ a raw version of WikidataEvolve can be compile. Be aware that the frequencies in
 
 
 <p align="center">
-   <img src="images/WikidataEvolve_raw_stats.png" alt="Details of the raw version of WikidataEvolve." height="60%" width="60%">
+   <img src="images/WikidataEvolve_raw_stats.png" alt="Details of the raw version of WikidataEvolve." height="80%" width="80%">
 </p>
 
 <p align="center" style="font-family:Monospace">
