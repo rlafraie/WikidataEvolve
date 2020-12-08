@@ -30,6 +30,7 @@ Snapshots describe the time states of a knowledge graph encoded by a set of trip
 <p align="center" style="font-family:Monospace">
    Figure 1: Illustration of the snapshots of a sample evolving knowledge graph.
 </p>
+
 <br>
    
 
@@ -46,9 +47,6 @@ Updates, in turn, document the atomic changes made to the knowledge graph during
    Figure 2: Illustration of the updates of a sample evolving knowledge graph.
 </p>
 <br>
-
-
-
 
 #### Increments
 Now, the increments of a knowledge graph (likewise snapshots) are also represented by a set of triples but only contain triples that recently have been added to the graph. Hence, they can be understood by the delta between two consecutive snapshots. Increments are related to a learning variant for transductive knowledge graph embedding techniques characterized as pseudo-incremental. In the literature it is often stated that static embedding techniques, like TransE for instance, are required to learn their representations from scratch after their represented knowledge graph has been altered.
@@ -67,11 +65,14 @@ Now this is a time- and space-consuming process—especially in highly dynamic k
 All types of embedding techniques are provided with the same test datasets, in order to make their evaluation performances comparable.
 Furthermore, inductive embedding techniques are provided with test samples to subject them to Negative Triple Classification. Thereby, for each category of Negative Triple Classification the related samples are provided in separate files.
 
+<br>
 
 ## Filtering process
 
 For the compilation process of WikidataEvolve a filtering process was conducted. It is inspired by [3] in which the authors compiled
 the FB15k benchmark by filtering entities and relations which have a minum number of fact occurences in the knowledge graph to reduce noise. In this way it is faciliated that knowledge graph embedding techniques can capture enough relational information to learn representations for the entities and relations of a knowledge graph. Transferred to the filtering process of WikidataEvolve, I performed a snapshot-centric filtering. This means that entities and relations are considered which possess a minimum frequency of 15 fact occurences for relations and 70 fact occurences for entities after they emerge in the graph for the first time. 
+
+<br>
 
 ## Benchmark Details
 
@@ -98,8 +99,9 @@ a raw version of WikidataEvolve can be compile. Be aware that the frequencies in
 <p align="center" style="font-family:Monospace">
    Table 2: Details of the raw version of WikidataEvolve.
 </p>
-<br>
 
+<br>
+<br>
 
 ## Executable Script
 
@@ -125,6 +127,9 @@ The script prompts you to provide 3 inputs in the following order:
 1) Specify the number of intervals used to divide the Wikidata9M time stream and resulting in the equivalent number of snapshots, updates, increments.
 2) Answer with y (yes) or n (no) whether you want to filter entities and relations with a minimum number of fact occurences at all snapshots.
 3) Specify the number of test examples in the test samples. If you test samples are not needed leave this prompt blank and only test datasets will be compiled.
+
+<br>
+
 
 ## Benchmark Folder Structure
 ```txt
@@ -190,6 +195,7 @@ root/datasets/WikidataEvolve/[ filtered | raw ]_version_[ <timestamp> ]
            ├── tc_positive_oscillated_[ train | valid | test ]_triples.txt     # each category and source dataset. For a detailed task description, I 
            └── tc_negative_oscillated_[ train | valid | test ]_triples.txt     # refer to section 5 of my master's thesis.
 ```
+<br>
 
 ## References
 <a id="1">[1]</a> 
