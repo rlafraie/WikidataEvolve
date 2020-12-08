@@ -84,7 +84,7 @@ a raw version of WikidataEvolve can be compile. Be aware that the frequencies in
 </p>
 
 <p align="center" style="font-family:Monospace">
-   Table 1: Details of the *official*, filtered version of WikidataEvolve.
+   Table 1: Details of the official, filtered version of WikidataEvolve.
 </p>
 
 <br>
