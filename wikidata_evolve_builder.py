@@ -179,8 +179,8 @@ def get_triple_operations_stream(triple_operations_file):
     triple_operations_list = []
     with bz2.open(triple_operations_file, mode="rt", encoding="UTF-8") as f:
         for line in f:
-            subject_ect_, object_, predicate_, operations_type, ts = line.split()
-            triple_operations_list.append((int(subject_ect_), int(object_), int(predicate_), operations_type, ts))
+            subject_, object_, predicate_, operations_type, ts = line.split()
+            triple_operations_list.append((int(subject_), int(object_), int(predicate_), operations_type, ts))
 
     return triple_operations_list
 
@@ -577,15 +577,15 @@ def determine_training_triple_operations(interval_triple_operations, inserted_tr
     train_triple_operations = []
     assigned_triples = set()
     for operation in interval_triple_operations:
-        subject_ect_, object_, predicate_, operations_type, ts = operation
-        triple = (subject_ect_, object_, predicate_)
+        subject_, object_, predicate_, operations_type, ts = operation
+        triple = (subject_, object_, predicate_)
 
         if triple not in assigned_triples:
             if triple in inserted_train_triples and operations_type == "+":
-                train_triple_operations.append((subject_ect_, object_, predicate_, operations_type, ts))
+                train_triple_operations.append((subject_, object_, predicate_, operations_type, ts))
                 assigned_triples.add(triple)
                 if triple in deleted_train_triples and operations_type == "-":
-                    train_triple_operations.append((subject_ect_, object_, predicate_, operations_type, ts))
+                    train_triple_operations.append((subject_, object_, predicate_, operations_type, ts))
                 assigned_triples.add(triple)
 
                 return train_triple_operations
